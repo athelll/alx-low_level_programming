@@ -1,5 +1,6 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
+#include <stdio.h>
 
 /**
  * _putchar - writes the character c to stdout
@@ -9,14 +10,7 @@
  * On error, -1 is returned, and error is set appropriately.
  */
 
-#include <stdio.h>
-
-int _putchar(char c)
-{
-putchar(c);
-
-return(1);
-}
+int _putchar(char c);
 
 /**
  * print_alphabet - print lowercase alphabet
