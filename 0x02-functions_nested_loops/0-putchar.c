@@ -1,5 +1,5 @@
 #include "main.h"
-i
+
 /**
 * _putchar - Prints single character
 * @c: First operand
@@ -8,7 +8,7 @@ i
 * Return: Always 0.
 */
 
-int _putchar (char c)
+int _putchar(char c)
 {
 putchar(c);
 
