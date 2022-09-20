@@ -12,7 +12,6 @@ int len = strlen(str);
 int a = len / 2;
 int b = (len - 1) / 2;
 int i = 0;
-int c = b;
 
 while (i < len)
 {
@@ -30,10 +29,8 @@ else
 {
 if (len != b)
 {
-if(b == c)
-continue;
-_putchar(str[b]);
 b++;
+_putchar(str[b]);
 }
 else
 break;
