@@ -27,7 +27,7 @@ break;
 }
 else
 {
-if (len != a)
+if (len != b)
 {
 _putchar(str[b]);
 b++;
