@@ -1,18 +1,18 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
 
 /**
- * free_dog - free instance of struct dog
- * @d: instance to be freed
- */
-
+* free_dog - frees a dog
+*
+* @d: dog to free
+*
+* Return: void
+*/
 void free_dog(dog_t *d)
 {
-	if (d == NULL)
+	if (d == 0)
 		return;
-
-	if (d->name) /* free members of struct that exist */
+	if (d->name)
 		free(d->name);
 	if (d->owner)
 		free(d->owner);
