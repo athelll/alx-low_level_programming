@@ -18,6 +18,7 @@ void array_iterator(int *array, size_t size, void (*action)(int))
 
 	func = action;
 
+	if (array != NULL && action != NULL)
 	for (i = 0; i < b; i++)
 	{
 		func(array[i]);
