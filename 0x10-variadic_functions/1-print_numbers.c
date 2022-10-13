@@ -3,6 +3,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+  * print_numbers - prints numbers
+  * @separator : char
+  * @n : integer
+  * @... : vardiac arguments
+  */
+
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
 	va_list ap;
@@ -13,7 +20,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	va_start(ap, n);
 
-	for(a = 0; a < n; a++)
+	for (a = 0; a < n; a++)
 	{
 		if (a == n - 1)
 		{
