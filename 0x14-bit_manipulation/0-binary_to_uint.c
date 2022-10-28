@@ -9,12 +9,14 @@
   */
 unsigned int binary_to_uint(const char *b)
 {
-	int idx = 0;
 	int len = strlen(b) - 1;
 	int sum = 0;
 	int pow = 1;
 
-	for (; len >= idx; len--)
+	if (b == NULL)
+		return (0);
+
+	for (; len >= 0; len--)
 	{
 		if (b[len] != '1' && b[len] != '0')
 			return (0);
