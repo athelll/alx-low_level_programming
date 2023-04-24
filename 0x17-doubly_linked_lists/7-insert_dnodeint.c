@@ -42,6 +42,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (buf->next == NULL)
 		return (add_dnodeint_end(h, n));
 
-	/** handles any unforseen abnormalities**/
+	/** handles any unforseen abnormalities **/
 	return (NULL);
 }
