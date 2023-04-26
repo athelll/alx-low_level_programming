@@ -5,13 +5,9 @@
 # current directory in linux     ///
 # //////////////////////////////////
 
-# files
-FILE="liball.o"
-FILE_SO="liball.so"
-
 # creates library
-gcc -c -fPIC ./*.c -o "$FILE"
-gcc -shared "$FILE" -o "$FILE_SO"
+gcc -c -fPIC ./*.c
+gcc -shared -o liball.so ./*.o
 
 # deletes object file
-rm $FILE
+rm ./*.o
