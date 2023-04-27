@@ -9,20 +9,25 @@
 
 hash_table_t *hash_table_create(unsigned long int size)
 {
-	int i = 0;
+	unsigned int i = 0;
 	hash_node_t **nodes;
-	hash_table_t *table = malloc(sizeof(hash_table_t));
+	hash_table_t *table;
+
+	if (size == 0)
+		return (NULL);
+
+	table = malloc(sizeof(hash_table_t));
 
 	if (!table)
 		return (NULL);
 
-	if (!size || size == 0)
+	nodes = malloc(sizeof(*nodes) * size);
+
+	if (!nodes)
 	{
 		free(table);
 		return (NULL);
 	}
-
-	*nodes = malloc(sizeof(nodes *) * size);
 
 	/** initializes all nodes to NULL **/
 	while (i < size)
