@@ -13,11 +13,19 @@ hash_node_t *new_item(const char *key, const char *value)
 	hash_node_t *new = (hash_node_t *)malloc(sizeof(hash_node_t));
 
 	if (!new)
-		return (0);
-	new->key = (char *) malloc(strlen(key) + 1);
-	new->value = (char *) malloc(strlen(value) + 1);
-	strcpy(new->key, key);
-	strcpy(new->value, value);
+		return (NULL);
+
+	new->key = strdup(key);
+	new->value = strdup(value);
+
+	if (!(new->key) || !(new->value))
+	{
+		free(new->key);
+		free(new->value);
+		free(new);
+		return (NULL);
+	}
+
 	return (new);
 }
 
@@ -41,12 +49,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (ht->array[index] == NULL)
 	{
-		/**
-		 * this code handles collision
-		 * by adding new item to the head
-		 * of the lists bucket
-		 */
 		new = new_item(key, value);
+		if (new == NULL)
+			return (0);
+
 		ht->array[index] = new;
 		ht->array[index]->next = NULL;
 		return (1);
@@ -55,9 +61,26 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		hash_node_t *old = ht->array[index];
 
-		new = new_item(key, value);
-		new->next = old;
-		old = new;
-		return (1);
+		while (old != NULL && strcmp(old->key, key) != 0)
+			old = old->next;
+
+		if (old == NULL)
+		{
+			new = new_item(key, value);
+			if (new == NULL)
+				return (0);
+
+			new->next = ht->array[index];
+			ht->array[index] = new;
+			return (1);
+		}
+		else
+		{
+			free(old->value);
+			old->value = strdup(value);
+			if (!(old->value))
+				return (0);
+			return (1);
+		}
 	}
 }
