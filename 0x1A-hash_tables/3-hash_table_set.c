@@ -44,7 +44,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (!ht || !(ht->array) || strlen(key) == 0 || !value || !key)
 		return (0);
-
 	index = key_index((const unsigned char *) key, ht->size);
 
 	if (ht->array[index] == NULL)
@@ -52,7 +51,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		new = new_item(key, value);
 		if (new == NULL)
 			return (0);
-
 		ht->array[index] = new;
 		ht->array[index]->next = NULL;
 		return (1);
@@ -63,13 +61,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 		while (old != NULL && strcmp(old->key, key) != 0)
 			old = old->next;
-
 		if (old == NULL)
 		{
 			new = new_item(key, value);
 			if (new == NULL)
 				return (0);
-
 			new->next = ht->array[index];
 			ht->array[index] = new;
 			return (1);
